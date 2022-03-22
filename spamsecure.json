@@ -1,0 +1,12 @@
+
+{
+	"stable": {
+		"1.0": {
+			"current": "1.0.0",
+			"download": "https://github.com/chris1278/spamsecure",
+			"announcement": "https://www.phpbb.de/community/viewtopic.php?f=149&p=1387722#p1387722",
+			"eol": null,
+			"security": false
+		}
+	}
+}
