@@ -56,79 +56,98 @@ class listener implements EventSubscriberInterface
 	public function permissions($event)
 	{
 		$permissions = $event['permissions'];
-		$permissions['u_view_spamsecure'] = ['lang' => 'ACL_U_VIEW_SPAMSECURE', 'cat' => 'misc'];
+		$permissions['u_view_spamsecure_invalid_chars'] = ['lang' => 'ACL_U_VIEW_SPAMSECURE_INVALID_CHARS', 'cat' => 'misc'];
+		$permissions['u_view_spamsecure_invalid_regex'] = ['lang' => 'ACL_U_VIEW_SPAMSECURE_INVALID_REGEX', 'cat' => 'misc'];
 		$event['permissions'] = $permissions;
 	}
 
 	public function show_spamsecure_message($event)
 	{
-		if ($this->auth->acl_get('u_view_spamsecure'))
-		{
-			$searchchars = $this->config['spamsecure_invalid_chars'];
-			$searchstrg = '/(?:' . $this->config['spamsecure_invalid_regex'] . ')/i';
-			$warn_msg = [];
-			$message = $event['message'];
+		$searchchars = $this->config['spamsecure_invalid_chars'];
+		$searchstrg = '/(?:' . $this->config['spamsecure_invalid_regex'] . ')/i';
+		$warn_msg = [];
+		$message = $event['message'];
 
+		if ($this->auth->acl_get('u_view_spamsecure_invalid_chars'))
+		{
 			if (strpbrk($message, $searchchars))
 			{
 				$warn_msg[] = ($this->language->lang('SPAMSECURE_INVALID_CHARS_WARNING'));
 			}
+		}
+
+		if ($this->auth->acl_get('u_view_spamsecure_invalid_regex'))
+		{
 			if (preg_match($searchstrg, $message))
 			{
 				$warn_msg[] = ($this->language->lang('SPAMSECURE_INVALID_REGEX_WARNING'));
 			}
-			if (count($warn_msg))
-			{
-				$event['warn_msg'] = $warn_msg;
-			}
 		}
+
+		if (count($warn_msg))
+		{
+			$event['warn_msg'] = $warn_msg;
+		}
+
 	}
 
 	public function show_spamsecure_original_phpbb_contact_form($event)
 	{
-		if ($this->auth->acl_get('u_view_spamsecure'))
-		{
-			$searchchars = $this->config['spamsecure_invalid_chars'];
-			$searchstrg = '/(?:' . $this->config['spamsecure_invalid_regex'] . ')/i';
-			$warn_msg = [];
-			$message = $event['body'];
+		$searchchars = $this->config['spamsecure_invalid_chars'];
+		$searchstrg = '/(?:' . $this->config['spamsecure_invalid_regex'] . ')/i';
+		$warn_msg = [];
+		$message = $event['body'];
 
+		if ($this->auth->acl_get('u_view_spamsecure_invalid_chars'))
+		{
 			if (strpbrk($message, $searchchars))
 			{
 				$warn_msg[] = ($this->language->lang('SPAMSECURE_INVALID_CHARS_WARNING'));
 			}
+		}
+
+		if ($this->auth->acl_get('u_view_spamsecure_invalid_regex'))
+		{
 			if (preg_match($searchstrg, $message))
 			{
 				$warn_msg[] = ($this->language->lang('SPAMSECURE_INVALID_REGEX_WARNING'));
 			}
-			if (count($warn_msg))
-			{
-				$event['errors'] = $warn_msg;
-			}
 		}
+
+		if (count($warn_msg))
+		{
+			$event['errors'] = $warn_msg;
+		}
+
 	}
 
 	public function show_spamsecure_rmcgirr83_contactadmin_contact_form($event)
 	{
-		if ($this->auth->acl_get('u_view_spamsecure'))
-		{
-			$searchchars = $this->config['spamsecure_invalid_chars'];
-			$searchstrg = '/(?:' . $this->config['spamsecure_invalid_regex'] . ')/i';
-			$warn_msg = [];
-			$message = $event['data']['contact_message'];
+		$searchchars = $this->config['spamsecure_invalid_chars'];
+		$searchstrg = '/(?:' . $this->config['spamsecure_invalid_regex'] . ')/i';
+		$warn_msg = [];
+		$message = $event['data']['contact_message'];
 
+		if ($this->auth->acl_get('u_view_spamsecure_invalid_chars'))
+		{
 			if (strpbrk($message, $searchchars))
 			{
 				$warn_msg[] = ($this->language->lang('SPAMSECURE_INVALID_CHARS_WARNING'));
 			}
+		}
+
+		if ($this->auth->acl_get('u_view_spamsecure_invalid_regex'))
+		{
 			if (preg_match($searchstrg, $message))
 			{
 				$warn_msg[] = ($this->language->lang('SPAMSECURE_INVALID_REGEX_WARNING'));
 			}
-			if (count($warn_msg))
-			{
-				$event['error'] = $warn_msg;
-			}
 		}
+
+		if (count($warn_msg))
+		{
+			$event['error'] = $warn_msg;
+		}
+
 	}
 }

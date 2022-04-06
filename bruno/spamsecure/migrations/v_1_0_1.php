@@ -9,17 +9,20 @@
 
 namespace bruno\spamsecure\migrations;
 
-class permission extends \phpbb\db\migration\migration
+class v_1_0_1 extends \phpbb\db\migration\migration
 {
 	public static function depends_on()
 	{
-		return ['\bruno\spamsecure\migrations\acp_module'];
+		return ['\bruno\spamsecure\migrations\v_1_0_0'];
 	}
 
 	public function update_data()
 	{
 		return [
-			['permission.add', ['u_view_spamsecure']],
+			['permission.remove',	['u_view_spamsecure']],
+			['permission.add',		['u_view_spamsecure_invalid_regex']],
+			['permission.add',		['u_view_spamsecure_invalid_chars']],
 		];
 	}
+
 }

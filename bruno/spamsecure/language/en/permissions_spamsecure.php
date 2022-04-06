@@ -18,5 +18,6 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, [
-	'ACL_U_VIEW_SPAMSECURE'	=> 'Use Spamsecure by 69bruno?',
+	'ACL_U_VIEW_SPAMSECURE_INVALID_CHARS'		=> 'Spamsecure setting: Apply <b>"Not allowed characters"</b>',
+	'ACL_U_VIEW_SPAMSECURE_INVALID_REGEX'		=> 'Spamsecure setting: Apply <b>"Expressions or strings that are not allowed"</b>',
 ]);

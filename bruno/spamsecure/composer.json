@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Allows spam protection to be applied to guests running on the server via PHP,",
 	"homepage": "https://cruiser-lounge.de",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"time": "2021-11-11",
 	"license": "GPL-2.0-only",
 	"authors": [
