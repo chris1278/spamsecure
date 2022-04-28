@@ -18,7 +18,8 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, [
-	'SPAMSECURE_INVALID_CHARS_WARNING'				=> 'The message contains forbidden characters!',
-	'SPAMSECURE_INVALID_REGEX_WARNING'				=> 'No links are allowed in the message!',
+	'SPAMSECURE_INVALID_CHARS_WARNING'				=> 'The message contains the following number of illegal characters/strings: ',
+	'SPAMSECURE_INVALID_CHARS_INFO'					=> '<br>The following characters/character strings are not permitted: ',
+	'SPAMSECURE_INVALID_REGEX_WARNING'				=> 'The message contains illegal regular expressions (e.g. links)!',
 
 ]);

@@ -18,7 +18,7 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, [
-	'SPAMSECURE_INVALID_CHARS_WARNING'				=> 'Die Nachricht enthält unerlaubte Zeichen!',
-	'SPAMSECURE_INVALID_REGEX_WARNING'				=> 'In der Nachricht sind keine Links erlaubt!',
-
+	'SPAMSECURE_INVALID_CHARS_WARNING'				=> 'Die Nachricht enthält die nachfolgende Anzahl unerlaubter Zeichen/Zeichenketten: ',
+	'SPAMSECURE_INVALID_CHARS_INFO'					=> '<br>Folgende Zeichen/Zeichenketten sind nicht erlaubt: ',
+	'SPAMSECURE_INVALID_REGEX_WARNING'				=> 'In der Nachricht sind nicht erlaubte reguläre Ausdrücke (z.B. Links)!',
 ]);
